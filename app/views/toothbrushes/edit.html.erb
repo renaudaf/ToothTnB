@@ -1,0 +1,7 @@
+<h1><%= @toothbrush.title %></h1>
+
+<%= simple_form_for(@toothbrush) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
