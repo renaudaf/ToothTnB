@@ -9,16 +9,16 @@ class ToothbrushesController < ApplicationController
   end
 
   def new
-  @toothbrush = Toothbrush.new
+    @toothbrush = Toothbrush.new
   end
 
   def create
-  @toothbrush = Toothbrush.new(toothbrush_params)
-  @toothbrush.save
+    @toothbrush = Toothbrush.new(toothbrush_params)
+    @toothbrush.save
   end
 
   def edit
-   @toothbrush = Toothbrush.find(params[:id])
+    @toothbrush = Toothbrush.find(params[:id])
   end
 
   def update
@@ -29,7 +29,6 @@ class ToothbrushesController < ApplicationController
   private
 
   def toothbrush_params
-  params.require(:tootbrush).permit(:title, :description)
+    params.require(:tootbrush).permit(:title, :description)
   end
-
 end
