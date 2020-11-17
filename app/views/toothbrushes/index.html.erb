@@ -11,11 +11,18 @@
             <p><%= toothbrush.description %></p>
           </div>
           <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% if !user_signed_in? || current_user.photo.attached? == false %>
+            <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605653115/smile_v92k1z.webp", class: "card-trip-user avatar-bordered" %>
+          <% else %>
+            <%= cl_image_tag current_user.photo.key, class:"card-trip-user avatar-bordered" %>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
-  <%= link_to 'Create new toothbrush', new_toothbrush_path %>
+  <div class="add-tb">
+  <%= link_to 'Toothbrush', new_toothbrush_path %>
+  <i class="fas fa-plus" style='color: #f93e4a'></i>
+  </div>
 </div>
 
