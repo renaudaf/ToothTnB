@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
     resources :rentals, only: [:create, :new]
   end
-  resources :rentals, only: [:show, :index]
+  resources :rentals, only: [:show, :index] do
+    member do
+      patch :accept
+      patch :deny
+    end
+  end
   resources :reviews, only: [:destroy]
 end

@@ -1,8 +1,20 @@
-<% @rentals.each do |rental| %>
-  <% toothbrush = Toothbrush.find(@rentals[0].toothbrush_id) %>
-  <% user = User.find(@rentals[0].user_id) %>
-  <p><%= user.first_name.capitalize %> <%= user.last_name.capitalize %>
-    rent <%= toothbrush.title %> for <%= rental.date %>
-  </p>
-  <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div class="container rentals-index">
+  <% @rentals.each_with_index do |rental, index| %>
+    <div class="row card-product m-4">
+      <div class="col-3">
+        <% toothbrush = Toothbrush.find(@rentals[index].toothbrush_id) %>
+        <% user = User.find(@rentals[index].user_id) %>
+        <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+      </div>
+      <div class="col-9 card-product-infos">
+        <h2><%= link_to toothbrush.title, rental_path(rental) %></h2>
+        <p>Reserve by:
+          <strong><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></strong>
+          on: <%= rental.date %>
+        </p>
+        <p>Status: <%= rental.status %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
