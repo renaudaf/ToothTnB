@@ -1,4 +1,5 @@
 class Toothbrush < ApplicationRecord
+  has_one_attached :photo
   has_many :reviews, dependent: :destroy
   has_many :rentals, dependent: :destroy
   validates :title, presence: true, uniqueness: true

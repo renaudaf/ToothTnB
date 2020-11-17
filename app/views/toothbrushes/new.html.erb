@@ -1,10 +1,11 @@
 <div class="container">
  <h1 class='mt-2'>New Toothbrush</h1>
+ 
  <%= simple_form_for(@toothbrush) do |f|  %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :status, type: 'select', collection: ['Available', 'Not Available' ]%>
-  <%# <%= f.input :photo, as: :file %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
  <% end %>
 </div>
