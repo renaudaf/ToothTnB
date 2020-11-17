@@ -6,6 +6,7 @@ class ToothbrushesController < ApplicationController
 
   def show
     @toothbrush = Toothbrush.find(params[:id])
+    @review = Review.new
   end
 
   def new
