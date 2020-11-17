@@ -1,0 +1,8 @@
+<% @rentals.each do |rental| %>
+  <% toothbrush = Toothbrush.find(@rentals[0].toothbrush_id) %>
+  <% user = User.find(@rentals[0].user_id) %>
+  <p><%= user.first_name.capitalize %> <%= user.last_name.capitalize %>
+    rent <%= toothbrush.title %> for <%= rental.date %>
+  </p>
+  <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>

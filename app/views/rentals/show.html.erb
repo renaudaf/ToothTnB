@@ -1,0 +1,10 @@
+<div class="central-block">
+  <div>
+    <h1>Confirmation Page</h1>
+    <p><%= @user.last_name.capitalize %> <%= @user.first_name.capitalize %> rent <%= @toothbrush.title %> the <%= @rental.date %></p>
+    <p>Status: <%= @rental.status %></p>
+    <%= link_to 'Rentals', rentals_path, class: 'btn btn-primary mx-2' %>
+    <%= link_to 'Toothbrush', toothbrushes_path, class: 'btn btn-primary mx-2' %>
+   </div>
+</div>
+
