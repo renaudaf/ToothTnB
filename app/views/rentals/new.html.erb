@@ -1,6 +1,6 @@
 <div class="container">
  <h1 class='mt-2'>Enter a date for your rental</h1>
- <%= simple_form_for(@rental) do |f|  %>
+ <%= simple_form_for(@rental, url: toothbrush_rentals_path(@toothbrush)) do |f|  %>
   <%= f.input :date %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
  <% end %>
