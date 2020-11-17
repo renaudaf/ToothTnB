@@ -1,4 +1,4 @@
-<% if @reviews.count == 0 %>
-  No reviews!! Make one!!
-<% else %>
-
+<% @toothbrush.revies.each do |review| %>
+<li><%= review.rating %></li>
+<li><%= review.content %></li>
+<% end %>
