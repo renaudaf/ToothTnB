@@ -35,7 +35,7 @@ class ToothbrushesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @toothbrush = Toothbrush.find(params[:id])
     @toothbrush.destroy
 
