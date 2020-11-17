@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
-  def new
-    @toothbrush = toothbrush.find(params[:toothbrush_id])
+   def new
+    @toothbrush = Toothbrush.find(params[:toothbrush_id])
     @review = Review.new
   end
 
   def create
-    @toothbrush = toothbrush.find(params[:toothbrush_id])
+    @toothbrush = Toothbrush.find(params[:toothbrush_id])
     @review = Review.new(review_params)
-    @review.content = @content
+    @review.toothbrush = @toothbrush
     @review.rating = review_params["rating"].to_i
     if @review.save
       redirect_to #should ask where

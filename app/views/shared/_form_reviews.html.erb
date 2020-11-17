@@ -1,6 +1,5 @@
-<%= simple_form_for [ toothbrush, reviews], current_user.reviews.new do |f| %>
-  <%= rentals.id %>">
-  <%= f.input :content, as: :text, class: "form-control" %>
-  <%= f.input :rating, class: "form-control"%>
+<%= simple_form_for [ @toothbrush, @review ] do |f| %>
+  <%= f.input :content, as: :text, required: true, class: "form-control" %>
+  <%= f.input :rating, placeholedr: '1', collection: 1..5, required: true, class: "form-control"%>
   <%= f.submit "Add Review", class: "btn btn-normal form-control" %>
 <% end %>
