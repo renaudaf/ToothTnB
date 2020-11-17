@@ -10,7 +10,7 @@
             <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
             <p><%= toothbrush.description %></p>
           </div>
-          <h2 class="card-trip-pricing">£99.99</h2>
+          <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
       </div>
