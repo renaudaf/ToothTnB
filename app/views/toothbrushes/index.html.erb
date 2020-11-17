@@ -11,7 +11,11 @@
             <p><%= toothbrush.description %></p>
           </div>
           <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <% if !user_signed_in? || current_user.photo.attached? == false %>
+            <%= image_tag "smile", class: "card-trip-user avatar-bordered" %>
+          <% else %>
+            <%= cl_image_tag current_user.photo.key, class:"card-trip-user avatar-bordered" %>
+          <% end %>
         </div>
       </div>
     <% end %>
