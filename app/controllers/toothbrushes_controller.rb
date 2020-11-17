@@ -14,7 +14,11 @@ class ToothbrushesController < ApplicationController
 
   def create
     @toothbrush = Toothbrush.new(toothbrush_params)
-    @toothbrush.save
+    if @toothbrush.save
+      redirect_to toothbrush_path(@toothbrush)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -23,12 +27,16 @@ class ToothbrushesController < ApplicationController
 
   def update
     @toothbrush = Toothbrush.find(params[:id])
-    @toothbrush.update(toothbrush_params)
+    if @toothbrush.update(toothbrush_params)
+      redirect_to toothbrush_path(@toothbrush)
+    else
+      render 'edit'
+    end
   end
 
   private
 
   def toothbrush_params
-    params.require(:tootbrush).permit(:title, :description)
+    params.require(:toothbrush).permit(:title, :description, :status)
   end
 end
