@@ -1,18 +1,13 @@
 class ReviewsController < ApplicationController
-   def new
-    @toothbrush = Toothbrush.find(params[:toothbrush_id])
-    @review = Review.new
-  end
-
   def create
-    @toothbrush = Toothbrush.find(params[:toothbrush_id])
-    @review = Review.new(review_params)
-    @review.toothbrush = @toothbrush
-    @review.rating = review_params["rating"].to_i
-    if @review.save
-      redirect_to #should ask where
+    toothbrush = Toothbrush.find(params[:toothbrush_id])
+    review = Review.new(review_params)
+    review.user = current_user
+    review.toothbrush = toothbrush
+    if review.save
+      redirect_to toothbrush_path(toothbrush)
     else
-      render :new
+      render "toothbrushes/show"
     end
   end
 

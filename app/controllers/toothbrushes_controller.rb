@@ -1,4 +1,6 @@
 class ToothbrushesController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @toothbrushes = Toothbrush.all
@@ -6,6 +8,7 @@ class ToothbrushesController < ApplicationController
 
   def show
     @toothbrush = Toothbrush.find(params[:id])
+    @review = Review.new
   end
 
   def new
@@ -34,7 +37,7 @@ class ToothbrushesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @toothbrush = Toothbrush.find(params[:id])
     @toothbrush.destroy
 
@@ -44,6 +47,6 @@ class ToothbrushesController < ApplicationController
   private
 
   def toothbrush_params
-    params.require(:toothbrush).permit(:title, :description, :status, :photo)
+    params.require(:toothbrush).permit(:title, :description, :status, :photo, :price)
   end
 end

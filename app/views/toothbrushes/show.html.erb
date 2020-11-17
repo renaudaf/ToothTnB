@@ -1,15 +1,41 @@
-<div class="show_container">
-  <div class="show_title">
+<div class="container">
+  <div class="show_title mt-3">
     <h2> <%= @toothbrush.title %> </h2>
   </div>
-  <div class="toothbrush_description">
+  <div class="toothbrush_description d-flex align-items-center">
     <%= cl_image_tag @toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
     <ul>
-      <li><p> <%= @toothbrush.description %> </p></li>
-      <li><p> <%= @toothbrush.status %> </p></li>
-      <li><%= link_to "Edit", edit_toothbrush_path(@toothbrush) %></li>
-      <li><%= link_to "Delete", "/toothbrushes/#{@toothbrush.id}", method: :destroy %></li>
+      <li><%= @toothbrush.description %> </li>
+      <li><%= @toothbrush.price %> $</li>
+      <li><%= @toothbrush.status %> </li>
+      <div class="link-container d-flex">
+       <li class='mr-2'><%= link_to "Edit", edit_toothbrush_path(@toothbrush) %></li>
+       <li><%= link_to "Remove", toothbrush_path(@toothbrush),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %></li>
+      </div>
     </ul>
   </div>
+
+ <div class="list-group mt-4">
+  <h2>Reviews</h2>
+   <% @toothbrush.reviews.each do |review| %>
+     <li class="list-group-item">
+       <small>
+         <% count = 0 %>
+         <% 5.times do %>
+           <% if review.rating > count %>
+             <i class="fas fa-star"></i>
+           <% else %>
+             <i class="far fa-star"></i>
+           <% end %>
+           <% count += 1 %>
+         <% end %>
+       </small>
+       <p><%= review.content %></p>
+     </li>
+   <% end %>
+ </div>
+
+ <%= render "reviews/form" %>
 </div>
-<%= link_to "Create Toothbrush", new_toothbrush_path, class: 'btn btn-primary create_btn' %>
