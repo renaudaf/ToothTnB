@@ -4,3 +4,14 @@
   margin-top: 24px;
   padding: 12px;
 }
+
+.show-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-dropdown button {
+  margin-bottom: 8px;
+  font-size: 18px;
+}

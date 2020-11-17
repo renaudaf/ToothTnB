@@ -27,6 +27,20 @@ class RentalsController < ApplicationController
     @toothbrush = Toothbrush.find(@rental[:toothbrush_id])
   end
 
+  def accept
+    @rental = Rental.find(params[:id])
+    @rental.status = "Accepted"
+    @rental.save!
+    redirect_to rental_path(@rental)
+  end
+
+  def deny
+    @rental = Rental.find(params[:id])
+    @rental.status = "Denied"
+    @rental.save!
+    redirect_to rental_path(@rental)
+  end
+
   private
 
   def rental_params

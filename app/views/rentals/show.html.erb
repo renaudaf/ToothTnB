@@ -5,9 +5,23 @@
     <div class="col-4">
       <%= cl_image_tag @toothbrush.photo.key, height: "100%", width: "100%" %>
     </div>
-    <div class="col-8">
-      <h1>Rent on: <%= @rental.date %></h1>
-      <h4><strong>Status: </strong><%= @rental.status %></h4>
+    <div class="col-8 py-3">
+      <h1><%= @toothbrush.title %></h1>
+      <h4>Rent on: <%= @rental.date %></h4>
+      <% if @rental.status == "Accepted" || @rental.status == "Denied" %>
+          <h5><strong>Status: </strong><%= @rental.status %></h5>
+      <% else %>
+        <div class="dropdown show-dropdown">
+          <h5><strong>Status: </strong></h5>
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= @rental.status %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to 'Accept', accept_rental_path(@rental), class: "dropdown-item dropdown-accept", method: :patch %>
+            <%= link_to 'Deny', deny_rental_path(@rental), class: "dropdown-item dropdown-deny", method: :patch %>
+          </div>
+        </div>
+      <% end %>
       <p><%= @user.last_name.capitalize %> <%= @user.first_name.capitalize %> rent this toothbrush</p>
     </div>
   </div>
