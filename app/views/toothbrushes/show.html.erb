@@ -1,3 +1,4 @@
 <h2> <%= @toothbrush.title %> </h2>
+<%= cl_image_tag @toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
 <p> <%= @toothbrush.description %> </p>
 <p> <%= @toothbrush.status %> </p>
