@@ -1,8 +1,10 @@
-<h1><%= @toothbrush.title %></h1>
+<div class="container">
+  <h1><%= @toothbrush.title %></h1>
 
-<%= simple_form_for(@toothbrush) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :status, type: 'select', collection: ['Available', 'Not Available' ]%>
-  <%= f.submit %>
-<% end %>
+  <%= simple_form_for(@toothbrush) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :status, type: 'select', collection: ['Available', 'Not Available' ]%>
+    <%= f.submit %>
+  <% end %>
+</div>

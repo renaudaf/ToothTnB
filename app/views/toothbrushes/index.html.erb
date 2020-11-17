@@ -4,7 +4,7 @@
   <div class="toothbrush_container">
     <% @toothbrushes.each do |toothbrush| %>
       <div class="card-trip m-3">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
         <div class="card-trip-infos">
           <div>
             <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
