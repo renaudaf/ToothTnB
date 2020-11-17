@@ -34,6 +34,13 @@ class ToothbrushesController < ApplicationController
     end
   end
 
+  def delete
+    @toothbrush = Toothbrush.find(params[:id])
+    @toothbrush.destroy
+
+    redirect_to toothbrushes_path
+  end
+
   private
 
   def toothbrush_params
