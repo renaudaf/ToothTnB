@@ -2,6 +2,7 @@ class RentalsController < ApplicationController
   def new
     @rental = Rental.new
     @toothbrush = Toothbrush.find(params[:toothbrush_id])
+    authorize @rental
   end
 
   def create
@@ -10,6 +11,7 @@ class RentalsController < ApplicationController
     @rental.user = current_user
     @rental.toothbrush = @toothbrush
     @rental.status = "Pending"
+    authorize @rental
     if @rental.save!
       redirect_to rental_path(@rental)
     else
@@ -18,17 +20,20 @@ class RentalsController < ApplicationController
   end
 
   def index
-    @rentals = Rental.all
+    @rentals = policy_scope(Rental)
   end
 
   def show
     @rental = Rental.find(params[:id])
     @user = User.find(@rental[:user_id])
     @toothbrush = Toothbrush.find(@rental[:toothbrush_id])
+    authorize @rental
   end
 
   def accept
     @rental = Rental.find(params[:id])
+    # @toothbrush = Toothbrush.find(@rental[:toothbrush_id])
+    authorize @rental
     @rental.status = "Accepted"
     @rental.save!
     redirect_to rental_path(@rental)
@@ -36,6 +41,8 @@ class RentalsController < ApplicationController
 
   def deny
     @rental = Rental.find(params[:id])
+    # @toothbrush = Toothbrush.find(@rental[:toothbrush_id])
+    authorize @toothbrush
     @rental.status = "Denied"
     @rental.save!
     redirect_to rental_path(@rental)
