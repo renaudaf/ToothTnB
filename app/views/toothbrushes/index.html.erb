@@ -12,7 +12,7 @@
           </div>
           <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
           <% if toothbrush.user.photo.attached? == false %>
-            <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605721688/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
+            <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
           <% else %>
             <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
           <% end %>
@@ -21,13 +21,12 @@
     <% end %>
   </div>
   <div class="add-tb">
-  <%= link_to 'Toothbrush', new_toothbrush_path %>
-  <i class="fas fa-plus" style='color: #f93e4a'></i>
+    <%= link_to 'Toothbrush', new_toothbrush_path %>
+    <i class="fas fa-plus" style='color: #f93e4a'></i>
   </div>
-</div>
-
-<div id="map"
+  <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
