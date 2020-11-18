@@ -4,6 +4,7 @@
   <%= simple_form_for(@toothbrush) do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
+    <%= f.input :address %>
     <%= f.input :status, type: 'select', collection: ['Available', 'Not Available' ]%>
     <%= f.submit %>
   <% end %>

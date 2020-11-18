@@ -4,6 +4,14 @@ class ToothbrushesController < ApplicationController
 
   def index
     @toothbrushes = Toothbrush.all
+    # @toothbrushes = Toothbrush.where.not(latitude: nil, longitude: nil)
+
+    @markers = @toothbrushes.geocoded.map do |toothbrush|
+      {
+        lat: toothbrush.latitude,
+        lng: toothbrush.longitude
+      }
+    end
   end
 
   def show
