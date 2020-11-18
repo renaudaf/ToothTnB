@@ -55,6 +55,6 @@ class ToothbrushesController < ApplicationController
   private
 
   def toothbrush_params
-    params.require(:toothbrush).permit(:title, :description, :status, :photo, :price)
+    params.require(:toothbrush).permit(:title, :description, :status, :photo, :price, :address)
   end
 end

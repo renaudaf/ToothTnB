@@ -23,6 +23,8 @@ require("channels")
 // ----------------------------------------------------
 import { updateStatusAccept, updateStatusDeny } from '../component/btn';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
 // External imports
 import "bootstrap";
 
@@ -37,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   updateStatusAccept();
   updateStatusDeny();
   initMapbox();
+  initAutocomplete();
 });

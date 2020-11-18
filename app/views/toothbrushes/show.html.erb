@@ -6,8 +6,13 @@
     <%= cl_image_tag @toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
     <ul>
       <li><%= @toothbrush.description %> </li>
+      <br>
       <li><%= @toothbrush.price %> $</li>
+      <br>
       <li><%= @toothbrush.status %> </li>
+      <br>
+      <li><%= @toothbrush.address %> </li>
+      <br>
       <div class="link-container d-flex">
        <li class='mr-2'><%= link_to "Edit", edit_toothbrush_path(@toothbrush) %></li>
        <li><%= link_to "Remove", toothbrush_path(@toothbrush),
