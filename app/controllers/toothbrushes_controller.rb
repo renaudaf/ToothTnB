@@ -1,22 +1,24 @@
 class ToothbrushesController < ApplicationController
-  before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @toothbrushes = Toothbrush.all
+    @toothbrushes = policy_scope(Toothbrush)
   end
 
   def show
     @toothbrush = Toothbrush.find(params[:id])
     @review = Review.new
+    authorize @toothbrush
   end
 
   def new
     @toothbrush = Toothbrush.new
+    authorize @toothbrush
   end
 
   def create
     @toothbrush = Toothbrush.new(toothbrush_params)
+    authorize @toothbrush
     if @toothbrush.save
       redirect_to toothbrush_path(@toothbrush)
     else
@@ -26,10 +28,12 @@ class ToothbrushesController < ApplicationController
 
   def edit
     @toothbrush = Toothbrush.find(params[:id])
+    authorize @toothbrush
   end
 
   def update
     @toothbrush = Toothbrush.find(params[:id])
+    authorize @toothbrush
     if @toothbrush.update(toothbrush_params)
       redirect_to toothbrush_path(@toothbrush)
     else
@@ -39,8 +43,8 @@ class ToothbrushesController < ApplicationController
 
   def destroy
     @toothbrush = Toothbrush.find(params[:id])
+    authorize @toothbrush
     @toothbrush.destroy
-
     redirect_to toothbrushes_path
   end
 
