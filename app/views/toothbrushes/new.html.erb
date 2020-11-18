@@ -6,6 +6,7 @@
   <%= f.input :description %>
   <%= f.input :price %>
   <%= f.input :status, type: 'select', collection: ['Available', 'Not Available' ]%>
+  <%= f.input :address %>
   <%= f.input :photo, as: :file %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
  <% end %>

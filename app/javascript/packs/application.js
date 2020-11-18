@@ -22,15 +22,19 @@ require("channels")
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 import { updateStatusAccept, updateStatusDeny } from '../component/btn';
+import { initMapbox } from '../plugins/init_mapbox';
 // External imports
 import "bootstrap";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+  console.log(document);
   // Call your functions here, e.g:
-  // initSelect2();
+  // initSelect2();  
   updateStatusAccept();
   updateStatusDeny();
+  initMapbox();
 });
