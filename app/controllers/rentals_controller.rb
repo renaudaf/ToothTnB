@@ -42,7 +42,7 @@ class RentalsController < ApplicationController
   def deny
     @rental = Rental.find(params[:id])
     # @toothbrush = Toothbrush.find(@rental[:toothbrush_id])
-    authorize @toothbrush
+    authorize @rental
     @rental.status = "Denied"
     @rental.save!
     redirect_to rental_path(@rental)
