@@ -11,10 +11,10 @@
             <p><%= toothbrush.description %></p>
           </div>
           <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
-          <% if !user_signed_in? || current_user.photo.attached? == false %>
-            <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605653115/smile_v92k1z.webp", class: "card-trip-user avatar-bordered" %>
+          <% if toothbrush.user.photo.attached? == false %>
+            <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605721688/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
           <% else %>
-            <%= cl_image_tag current_user.photo.key, class:"card-trip-user avatar-bordered" %>
+            <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
           <% end %>
         </div>
       </div>
