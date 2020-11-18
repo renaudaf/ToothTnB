@@ -6,13 +6,18 @@
     <%= cl_image_tag @toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
     <ul>
       <li><%= @toothbrush.description %> </li>
+      <br>
       <li><%= @toothbrush.price %> $</li>
-      <li> Status: <%= @toothbrush.status %> </li>
+      <br>
+      <li><%= @toothbrush.status %> </li>
+      <br>
+      <li><%= @toothbrush.address %> </li>
+      <br>
       <div class="link-container d-flex">
-        <% if policy(Toothbrush).edit? %>
+        <% if policy(@toothbrush).edit? %>
        <li class='mr-2'><%= link_to "Edit", edit_toothbrush_path(@toothbrush), class: "btn btn-primary"  %></li>
        <% end %>
-       <% if policy(Toothbrush).destroy? %>
+       <% if policy(@toothbrush).destroy? %>
        <li><%= link_to "Remove", toothbrush_path(@toothbrush), class: "btn btn-primary",
                         method: :delete,
                         data: { confirm: "Are you sure?" } %></li>

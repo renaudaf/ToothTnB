@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_11_18_171601) do
 
   # These are extensions that must be enabled in order to support this database
@@ -66,10 +65,10 @@ ActiveRecord::Schema.define(version: 2020_11_18_171601) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price", precision: 8, scale: 2
+    t.bigint "user_id", null: false
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_toothbrushes_on_user_id"
   end
 

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
   has_many :rentals
-  has_many :toothbrushes
+  has_many :toothbrushes, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_one_attached :photo
 end
