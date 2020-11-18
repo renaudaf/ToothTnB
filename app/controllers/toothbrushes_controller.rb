@@ -8,7 +8,8 @@ class ToothbrushesController < ApplicationController
     @markers = @toothbrushes.geocoded.map do |toothbrush|
       {
         lat: toothbrush.latitude,
-        lng: toothbrush.longitude
+        lng: toothbrush.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { toothbrush: toothbrush })
       }
     end
   end
