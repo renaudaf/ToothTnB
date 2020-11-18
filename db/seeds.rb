@@ -8,10 +8,13 @@
 require "open-uri"
 
 Toothbrush.all.destroy_all
+User.destroy_all
 
-tb_array = [{title: "Red Brush", description: " An awesome red brush, collectors item", price: 10, status: "Available", user_id: 1},
-            {title: "Blue Brush", description: " An awesome blue brush, collectors item", price: 11, status: "Not Available", user_id: 1},
-            {title: "Green Brush", description: " An awesome green brush, collectors item", price: 13, status: "Available", user_id: 1}]
+User.create!(email: 'ad@email.com', password: "1234", first_name: "hello", last_name: "bonjour")
+
+tb_array = [{title: "Red Brush", description: " An awesome red brush, collectors item", price: 10, status: "Available", user_id: User.first.id},
+            {title: "Blue Brush", description: " An awesome blue brush, collectors item", price: 11, status: "Not Available", user_id: User.first.id},
+            {title: "Green Brush", description: " An awesome green brush, collectors item", price: 13, status: "Available", user_id: User.first.id}]
 
 tb_array.each do |tb|
   file = URI.open('https://www.stpetedentist.com/wp-content/uploads/2016/02/iStock_000008263086_Small.jpg')
