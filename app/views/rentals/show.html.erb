@@ -15,9 +15,9 @@
             <%= @rental.status %>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <% if policy(Rental).accept? %>
-            <%= link_to 'Accept', accept_rental_path(@rental), class: "dropdown-item dropdown-accept", method: :patch %>
-            <%= link_to 'Deny', deny_rental_path(@rental), class: "dropdown-item dropdown-deny", method: :patch %>
+            <% if policy(@rental).accept? %>
+              <%= link_to 'Accept', accept_rental_path(@rental), class: "dropdown-item dropdown-accept", method: :patch %>
+              <%= link_to 'Deny', deny_rental_path(@rental), class: "dropdown-item dropdown-deny", method: :patch %>
             <% end %>
           </div>
         </div>

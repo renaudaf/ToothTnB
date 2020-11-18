@@ -19,10 +19,10 @@ class RentalPolicy < ApplicationPolicy
   end
 
   def accept?
-    record.user == user
+    record.toothbrush.user_id == user.id
   end
 
   def deny?
-    record.user == user
+    record.toothbrush.user_id == user.id
   end
 end
