@@ -1,14 +1,58 @@
 .show_container {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
-  display: flex;
+  
   text-align: center;
+  
 }
 
 .toothbrush_description li {
   list-style: none;
+  text-align: left;
 }
 
-.owner-title {
-  justify-content: center;
+.left_container {
+ 
+}
+
+.card_show {
+  display: flex;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+}
+
+.head_card {
+  padding: 20px;
+  color: #2a8aaf;
+}
+
+.toothbrush_description {
+  color: #63c4eb;
+}
+
+.list-group {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  color: #2a8aaf;
+  
+  
+  h2 {
+    color: #2a8aaf;
+  }
+}
+
+.right-container {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px;
+  
+
+  h2 {
+    color: #2a8aaf;;
+  }
 }
