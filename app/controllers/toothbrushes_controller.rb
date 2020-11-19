@@ -4,7 +4,6 @@ class ToothbrushesController < ApplicationController
   def index
     if params[:query].present?
       results = Toothbrush.search(params[:query])
-      noresult
       @toothbrushes = []
       @markers = []
       results.each do |toothbrush|
@@ -21,17 +20,11 @@ class ToothbrushesController < ApplicationController
       @toothbrushes = policy_scope(Toothbrush)
       @markers = @toothbrushes.geocoded.map do |toothbrush|
         {
-        lat: toothbrush.latitude,
-        lng: toothbrush.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { toothbrush: toothbrush })
+          lat: toothbrush.latitude,
+          lng: toothbrush.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { toothbrush: toothbrush })
         }
       end
-    end
-  end
-
-  def noresult
-    if results == nil
-
     end
   end
 

@@ -3,9 +3,10 @@
 
   <div class="toothbrush_container">
     <div class="row">
-    
+
+      <%= javascript_tag "alert('Sorry, no result for #{params[:query]} 😞, Please try something else')" unless @toothbrushes != [] %>
       <% @toothbrushes.each do |toothbrush| %>
-       
+
       <div class="col-sm-12 col-md-6 col-lg-4">
         <div class="card-trip mb-4">
         <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
@@ -22,7 +23,7 @@
             <% end %>
           </div>
         </div>
-      </div>      
+      </div>
       <% end %>
       <div class="add-tb my-3 col-12 text-center ">
         <%= link_to '➕  Toothbrush', new_toothbrush_path, class: "btn btn-primary btn-lg", id: "add-btn" %>
