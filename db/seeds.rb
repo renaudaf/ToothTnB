@@ -51,6 +51,12 @@ file = URI.open('https://billionaireteethwhitening.com/wp-content/uploads/2017/0
 seven.photo.attach(io: file, filename: 'like.png', content_type: 'image/png')
 puts "Creating #{seven[:title]}"
 
+tags = ["fancy", "old", "the best", "luxury"]
+
+tags.each do |tag|
+  Tag.create!(name: tag)
+end
+
 puts "Seeding done"
 
 
