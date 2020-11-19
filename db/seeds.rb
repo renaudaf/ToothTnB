@@ -9,6 +9,7 @@ require "open-uri"
 
 User.all.destroy_all
 Toothbrush.all.destroy_all
+Tag.all.destroy_all
 
 joe = User.create!(email: 'joe@email.com', password: "1111", first_name: "Joe", last_name: "Exotic")
 file = URI.open('https://upload.wikimedia.org/wikipedia/commons/b/b1/Joe_Exotic_(Santa_Rose_County_Jail).png')
