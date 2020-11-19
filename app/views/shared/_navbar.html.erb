@@ -7,11 +7,20 @@
   <% end %>
   <div class="search-bar">
     <%= form_tag root_path, method: :get, class: "d-flex" do %>
+    <% unless params["action"] == "new" %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a Toothbrush"
-      %>
+        placeholder: "Find a Toothbrush",
+        autofocus: "autofocus"
+        %>
+      <% else %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Toothbrush" %>
+      <% end %>
+
       <%= submit_tag "Search", id: "search-b", class: "btn btn-primary ml-2" %>
     <% end %>
   </div>
