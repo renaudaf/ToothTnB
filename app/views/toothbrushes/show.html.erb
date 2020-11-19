@@ -1,8 +1,7 @@
-<div class="container mb-5">
-  <div class="show_title mt-3">
+<div class="container mb-5 border border-primary d-flex">
+  <div class="show_title mt-3 border border-dark">
     <h2> <%= @toothbrush.title %> </h2>
-  </div>
-  <div class="toothbrush_description d-flex align-items-center">
+  <div class="toothbrush_description d-flex align-items-center border border-secondary">
     <%= cl_image_tag @toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
     <ul>
       <li><%= @toothbrush.description %> </li>
@@ -13,7 +12,7 @@
       <br>
       <li><%= @toothbrush.address %> </li>
       <br>
-      <div class="link-container d-flex">
+      <div class="link-container d-flex border border-success">
         <% if policy(@toothbrush).edit? %>
        <li class='mr-2'><%= link_to "Edit", edit_toothbrush_path(@toothbrush), class: "btn btn-primary"  %></li>
        <% end %>
@@ -26,27 +25,50 @@
       </div>
     </ul>
   </div>
-
- <div class="list-group mt-4">
+ <div class="list-group mt-4 border border-danger">
   <h2>Reviews</h2>
-   <% @toothbrush.reviews.each do |review| %>
-     <li class="list-group-item">
-       <small>
-         <% count = 0 %>
-         <% 5.times do %>
-           <% if review.rating > count %>
-             <i class="fas fa-star"></i>
-           <% else %>
-             <i class="far fa-star"></i>
-           <% end %>
-           <% count += 1 %>
-         <% end %>
-       </small>
-       <p><%= review.content %></p>
-       <p> <small> <em>Reviewed by: <%= review.user.first_name %> </em> </small> </p>
-     </li>
-   <% end %>
- </div>
-
- <%= render "reviews/form" %>
+    <% @toothbrush.reviews.each do |review| %>
+      <li class="list-group-item">
+      <small>
+      <% count = 0 %>
+      <% 5.times do %>
+        <% if review.rating > count %>
+          <i class="fas fa-star"></i>
+        <% else %>
+          <i class="far fa-star"></i>
+        <% end %>
+        <% count += 1 %>
+      <% end %>
+      </small>
+      <p><%= review.content %></p>
+      <p> <small> <em>Reviewed by: <%= review.user.first_name %> </em> </small> </p>
+      </li>
+      <% end %>
+    <%= render "reviews/form" %>
+  </div>
+  </div>
+  <div class="owner-container border border-dark">
+    <% if !@toothbrushes.empty? %>
+      <div class="toothbrush_container">
+        <h2>Owner's other toothbrushes</h2>
+        <% @toothbrushes.each do |toothbrush| %>
+            <div class="card-trip m-3">
+              <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
+                  <p><%= toothbrush.description %></p>
+                </div>
+                <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
+                <% if toothbrush.user.photo.attached? == false %>
+                  <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
+                <% else %>
+                  <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
