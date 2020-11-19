@@ -11,14 +11,13 @@
 }
 
 .toothbrush_container {
-  
   grid-template-columns: repeat(3, 1fr);
 }
 
 .card-trip {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 }
 
@@ -36,10 +35,9 @@
 
 .card-trip p {
   font-size: 12px;
-  opacity: .7;
+  opacity: 0.7;
   margin: 0;
 }
-
 
 .card-trip .card-trip-infos {
   padding: 16px;
@@ -57,19 +55,20 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #bee7f7;
+  color: white;
 }
 
- a {
+a {
   text-decoration: none;
-  color: #014CB1;
+  color: #014cb1;
   transition: color 0.5s;
 }
 
- a:hover {
+a:hover {
   text-decoration: none;
-  color: #DD1321;
+  color: #dd1321;
 }
 
 .p-3 {
@@ -78,11 +77,7 @@ body {
 }
 
 .add-tb:hover {
-  color: #DD1321;
-}
-
-body {
-  color: white;
+  color: #dd1321;
 }
 
 .toothbrush_container {
@@ -90,11 +85,11 @@ body {
     color: black;
   }
   h2 {
-    color:black;
+    color: black;
   }
 }
 
 .maps {
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
