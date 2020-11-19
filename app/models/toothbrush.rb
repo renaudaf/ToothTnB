@@ -11,6 +11,10 @@ class Toothbrush < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :status, inclusion: { in: ["Available", "Not Available"],
-    message: "%{value} is not a valid category" }
-
+              message: "%{value} is not a valid category" }
+  searchkick locations: [:location]
+  
+   def search_data
+    attributes.merge(location: {lat: latitude, lon: longitude})
+  end
 end
