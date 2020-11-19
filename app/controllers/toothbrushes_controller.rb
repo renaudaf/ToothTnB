@@ -16,6 +16,7 @@ class ToothbrushesController < ApplicationController
 
   def show
     @toothbrush = Toothbrush.find(params[:id])
+    @toothbrushes = @toothbrush.user.toothbrushes.reject{ |toothbrush| toothbrush == @toothbrush }
     @review = Review.new
     authorize @toothbrush
   end

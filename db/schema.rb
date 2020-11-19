@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_171601) do
+ActiveRecord::Schema.define(version: 2020_11_19_165627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 2020_11_18_171601) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "toothbrush_tags", force: :cascade do |t|
+    t.bigint "toothbrush_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_toothbrush_tags_on_tag_id"
+    t.index ["toothbrush_id"], name: "index_toothbrush_tags_on_toothbrush_id"
+  end
+
   create_table "toothbrushes", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -65,10 +80,10 @@ ActiveRecord::Schema.define(version: 2020_11_18_171601) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price", precision: 8, scale: 2
+    t.bigint "user_id", null: false
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_toothbrushes_on_user_id"
   end
 
@@ -91,5 +106,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_171601) do
   add_foreign_key "rentals", "users"
   add_foreign_key "reviews", "toothbrushes"
   add_foreign_key "reviews", "users"
+  add_foreign_key "toothbrush_tags", "tags"
+  add_foreign_key "toothbrush_tags", "toothbrushes"
   add_foreign_key "toothbrushes", "users"
 end
