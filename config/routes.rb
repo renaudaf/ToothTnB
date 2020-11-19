@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     end
   end
   resources :reviews, only: [:destroy]
+
+  resources :toothbrushes, only: [] do
+    resources :toothbrush_tags, only: [:new, :create]
+  end
 end

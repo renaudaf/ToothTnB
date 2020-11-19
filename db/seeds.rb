@@ -9,6 +9,7 @@ require "open-uri"
 
 User.all.destroy_all
 Toothbrush.all.destroy_all
+Tag.all.destroy_all
 
 joe = User.create!(email: 'joe@email.com', password: "1111", first_name: "Joe", last_name: "Exotic")
 file = URI.open('https://upload.wikimedia.org/wikipedia/commons/b/b1/Joe_Exotic_(Santa_Rose_County_Jail).png')
@@ -49,6 +50,12 @@ seven = Toothbrush.create!(title: "Poseidon Brush", description: "We are located
 file = URI.open('https://billionaireteethwhitening.com/wp-content/uploads/2017/03/tbrush-min-943x800.jpg')
 seven.photo.attach(io: file, filename: 'like.png', content_type: 'image/png')
 puts "Creating #{seven[:title]}"
+
+tags = ["fancy", "old", "the best", "luxury"]
+
+tags.each do |tag|
+  Tag.create!(name: tag)
+end
 
 puts "Seeding done"
 
