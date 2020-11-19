@@ -26,7 +26,7 @@ second.photo.attach(io: file, filename: 'basic.png', content_type: 'image/png')
 puts "Creating #{second[:title]}"
 
 third = Toothbrush.create!(title: "Superbrush", description: "The best brush ever seen", price: 1000, status: "Available", address: 'les iles de la madeleine', user_id: User.first.id)
-file = URI.open('https://res.cloudinary.com/renaudaf/image/upload/c_fill,h_300,w_300/bz0jzarqt0cbz1p1el5gmgknhpvo')
+file = URI.open('https://2.bp.blogspot.com/_6oNwJRFieFg/TNQxdla_WWI/AAAAAAAAAMg/EY3eRnZGmWM/s1600/toothbrush_1.jpg')
 third.photo.attach(io: file, filename: 'superbrush.png', content_type: 'image/png')
 puts "Creating #{third[:title]}"
 
