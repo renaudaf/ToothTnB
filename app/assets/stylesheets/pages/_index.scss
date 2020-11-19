@@ -11,7 +11,7 @@
 }
 
 .toothbrush_container {
-  display: grid;
+  
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -92,4 +92,9 @@ body {
   h2 {
     color:black;
   }
+}
+
+.maps {
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
