@@ -65,4 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'pundit'
 gem 'geocoder'
+gem 'searchkick', '~> 4.0'
 

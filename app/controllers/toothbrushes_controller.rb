@@ -2,15 +2,29 @@ class ToothbrushesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @toothbrushes = policy_scope(Toothbrush)
-    # @toothbrushes = Toothbrush.where.not(latitude: nil, longitude: nil)
-
-    @markers = @toothbrushes.geocoded.map do |toothbrush|
-      {
+    if params[:query].present?
+      results = Toothbrush.search(params[:query])
+      @toothbrushes = []
+      @markers = []
+      results.each do |toothbrush|
+        toothbrush_hash = {
+          lat: toothbrush.latitude,
+          lng: toothbrush.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { toothbrush: toothbrush })
+        }
+        @markers << toothbrush_hash
+        @toothbrushes << toothbrush
+      end
+      policy_scope(Toothbrush)
+    else
+      @toothbrushes = policy_scope(Toothbrush)
+      @markers = @toothbrushes.geocoded.map do |toothbrush|
+        {
         lat: toothbrush.latitude,
         lng: toothbrush.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { toothbrush: toothbrush })
-      }
+        }
+      end
     end
   end
 
