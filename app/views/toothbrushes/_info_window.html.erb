@@ -1,2 +1,4 @@
-<h2><%= toothbrush.title %></h2>
-<p><%= toothbrush.address %></p>
+<div class="cloud p-2">
+  <h2><%=link_to toothbrush.title, toothbrush_path(toothbrush), class: 'btn btn-primary'%></h2>
+  <p><%=link_to toothbrush.address, toothbrush_path(toothbrush), class: 'btn btn-secondary btn-sm disabled'%></p>
+</div>
