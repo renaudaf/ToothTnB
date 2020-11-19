@@ -37,6 +37,7 @@ class ToothbrushesController < ApplicationController
 
   def new
     @toothbrush = Toothbrush.new
+    @tag = Tag.all
     authorize @toothbrush
   end
 
@@ -46,6 +47,13 @@ class ToothbrushesController < ApplicationController
     authorize @toothbrush
     @toothbrush.user = user
     if @toothbrush.save
+      tag_ids = params[:toothbrush][:tags]
+      if tag_ids
+        tag_ids.each do |tag|
+          new_tag = ToothbrushTag.new(toothbrush_id: @toothbrush.id, tag_id: tag)
+          new_tag.save!
+        end
+      end
       redirect_to toothbrush_path(@toothbrush)
     else
       render 'new'

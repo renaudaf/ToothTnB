@@ -7,6 +7,9 @@
     <%= f.input :status, type: 'select', collection: ['Available', 'Not Available' ]%>
     <%= f.input :address %>
     <%= f.input :photo, as: :file %>
+    <%= f.input :tags, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>

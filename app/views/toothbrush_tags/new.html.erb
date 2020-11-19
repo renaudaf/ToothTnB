@@ -1,17 +1,8 @@
 <div class="container">
-  <h1>Add a tag to: <%= @toothbrush.title %></h1>
-
   <%= simple_form_for([@toothbrush, @toothbrush_tag]) do |f| %>
     <%= f.input :tag, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
     <%= f.submit %>
   <% end %>
-<!--
-  <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-  <option value="AL">Alabama</option>
-    ...
-  <option value="WY">Wyoming</option>
-</select> -->
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>

@@ -11,7 +11,7 @@
 }
 
 .toothbrush_container {
-  
+
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -47,6 +47,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  padding-bottom: 0px;
 }
 
 .card-trip-infos .card-trip-user {
@@ -97,4 +98,24 @@ body {
 .maps {
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.li-tags {
+  color: black;
+  list-style: none;
+  display: inline;
+  margin-right: 10px;
+  font-size: 12px;
+  background-color: #c0d9ff;
+  box-shadow: 0 0 6px rgba(192, 217, 255, 1);
+  padding: 0 6px;
+}
+
+.tags-list {
+  margin-left: 10px;
+  padding-left: 8px;
+}
+
+.add-tag {
+  font-size: 18px;
 }
