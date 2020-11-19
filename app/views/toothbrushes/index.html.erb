@@ -24,14 +24,12 @@
         </div>
       </div>      
       <% end %>
-
-      <div class="add-tb mb-3 col-12 ">
-        <%= link_to '➕  Toothbrush', new_toothbrush_path, class: "btn btn-primary btn-lg btn-block" %>
+      <div class="add-tb my-3 col-12 text-center ">
+        <%= link_to '➕  Toothbrush', new_toothbrush_path, class: "btn btn-primary btn-lg", id: "add-btn" %>
       </div>
-
       <div class="col-12">
         <div class= "maps" id="map"
-        style="width: 100%; height: 600px;"
+        style="width: 100%; height: 500px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
