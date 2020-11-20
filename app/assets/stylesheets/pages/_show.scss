@@ -46,8 +46,8 @@
   padding: 10px;
   position: absolute;
   overflow-y: scroll;
-  height: 100%;
-  
+  min-height: 450px;
+  height: 96%; 
 
   h2 {
     color: #2a8aaf;
