@@ -1,41 +1,46 @@
 <div class="index_container mb-4">
   <h1 class="p-3">Welcome to Toothbrush Paradise</h1>
-
-  <div class="toothbrush_container">
-    <div class="row">
-
-      <%= javascript_tag "alert('Sorry, no result for #{params[:query]} 😞, Please try something else')" unless @toothbrushes != [] %>
-      <% @toothbrushes.each do |toothbrush| %>
-
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="card-trip mb-4">
-        <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
-              <p><%= toothbrush.description %></p>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="left_container pt-3">
+        <div class="toothbrush_container">
+          <div class="row">
+            <%= javascript_tag "alert('Sorry, no result for #{params[:query]} 😞, Please try something else')" unless @toothbrushes != [] %>
+            <% @toothbrushes.each do |toothbrush| %>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="card-trip mb-4">
+              <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
+                    <p><%= toothbrush.description %></p>
+                  </div>
+                  <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
+                  <% if toothbrush.user.photo.attached? == false %>
+                    <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
+                  <% else %>
+                    <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
-            <% if toothbrush.user.photo.attached? == false %>
-              <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
-            <% else %>
-              <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
             <% end %>
           </div>
         </div>
       </div>
-      <% end %>
-      <div class="add-tb my-3 col-12 text-center ">
-        <%= link_to '➕  Toothbrush', new_toothbrush_path, class: "btn btn-primary btn-lg", id: "add-btn" %>
-      </div>
-      <div class="col-12">
+    </div>
+
+    <div class="col-lg-4">
+      <div class="map_container">
+        <div class="add-tb my-3 btn-block text-center ">
+          <%= link_to '➕  Toothbrush', new_toothbrush_path, class: "btn btn-primary btn-block btn-lg", id: "add-btn" %>
+        </div>
         <div class= "maps" id="map"
-        style="width: 100%; height: 500px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          style="width: 100%; height: 825px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div>
     </div>
-  </div>
+  </div>  
 </div>
-

@@ -1,7 +1,6 @@
 .show_container {
   width: 85%;
-  margin: 0 auto;
-  
+  margin: 0 auto;  
   text-align: center;
   
 }
@@ -50,9 +49,12 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 10px;
+  position: absolute;
+  overflow-y: scroll;
+  height: 100%;
   
 
   h2 {
-    color: #2a8aaf;;
+    color: #2a8aaf;
   }
 }
