@@ -43,7 +43,12 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  height: 100%;
+  position: absolute;
+  overflow-y: scroll;
+  min-height: 450px;
+  height: 96%; 
+
+
   h2 {
     color: #2a8aaf;
   }
