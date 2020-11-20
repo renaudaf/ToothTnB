@@ -19,6 +19,7 @@ class ToothbrushesController < ApplicationController
       policy_scope(Toothbrush)
     else
       @toothbrushes = policy_scope(Toothbrush)
+      @toothbrushes = @toothbrushes.where(status: "Available")
       @markers = @toothbrushes.geocoded.map do |toothbrush|
         {
           lat: toothbrush.latitude,
