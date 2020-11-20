@@ -1,8 +1,8 @@
 .show_container {
   width: 85%;
-  margin: 0 auto;  
+  margin: 0 auto;
   text-align: center;
-  
+
 }
 
 .card_show {
@@ -32,8 +32,8 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 20px;
   color: #2a8aaf;
-  
-  
+
+
   h2 {
     color: #2a8aaf;
   }
@@ -47,9 +47,13 @@
   position: absolute;
   overflow-y: scroll;
   height: 100%;
-  
+
 
   h2 {
     color: #2a8aaf;
   }
+}
+
+.show-list {
+  margin-left: 30px;
 }
