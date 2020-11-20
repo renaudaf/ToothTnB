@@ -43,6 +43,7 @@ class ToothbrushesController < ApplicationController
   end
 
   def create
+    @tag = Tag.all
     user = current_user
     @toothbrush = Toothbrush.new(toothbrush_params)
     authorize @toothbrush
@@ -57,6 +58,7 @@ class ToothbrushesController < ApplicationController
       end
       redirect_to toothbrush_path(@toothbrush)
     else
+      raise
       render 'new'
     end
   end
@@ -72,6 +74,7 @@ class ToothbrushesController < ApplicationController
     if @toothbrush.update(toothbrush_params)
       redirect_to toothbrush_path(@toothbrush)
     else
+
       render 'edit'
     end
   end
