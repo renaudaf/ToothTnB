@@ -11,7 +11,7 @@ User.all.destroy_all
 Toothbrush.all.destroy_all
 Tag.all.destroy_all
 
-joe = User.create!(email: 'joe@email.com', password: "1111", first_name: "Joe", last_name: "Exotic")
+joe = User.create!(email: 'joe@email.com', password: "12345", first_name: "Joe", last_name: "Exotic")
 file = URI.open('https://upload.wikimedia.org/wikipedia/commons/b/b1/Joe_Exotic_(Santa_Rose_County_Jail).png')
 joe.photo.attach(io: file, filename: 'joe.png', content_type: 'image/png')
 User.create!(email: 'mr@email.com', password: "12345", first_name: "Propre", last_name: "Mr")
