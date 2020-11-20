@@ -1,5 +1,6 @@
 class ToothbrushesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :set_counter
 
   def index
     if params[:query].present?
@@ -82,9 +83,19 @@ class ToothbrushesController < ApplicationController
     redirect_to toothbrushes_path
   end
 
+  def count
+    @toothbrush = Toothbrush.new
+    authorize @toothbrush
+    render json: { count: Toothbrush.where(status: "Available").count }
+  end
+
   private
 
   def toothbrush_params
     params.require(:toothbrush).permit(:title, :description, :status, :photo, :price, :address)
+  end
+
+  def set_counter
+    @toothbrushes_count = Toothbrush.where(status: "Available").count
   end
 end

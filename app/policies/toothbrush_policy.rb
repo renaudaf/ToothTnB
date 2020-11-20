@@ -5,6 +5,10 @@ class ToothbrushPolicy < ApplicationPolicy
     end
   end
 
+  def count?
+    true
+  end
+
   def index?
     true
   end
