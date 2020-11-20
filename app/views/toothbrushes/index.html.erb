@@ -31,7 +31,13 @@
                     <% end %>
                   </ul>
                 </div>
+                <ul class="tags-list">
+                  <% toothbrush.tags.each do |tag| %>
+                    <li class="li-tags"><%= tag.name.capitalize %></li>
+                  <% end %>
+                </ul>
               </div>
+            </div>
             <% end %>
           </div>
         </div>
