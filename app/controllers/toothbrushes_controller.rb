@@ -19,6 +19,7 @@ class ToothbrushesController < ApplicationController
       policy_scope(Toothbrush)
     else
       @toothbrushes = policy_scope(Toothbrush)
+      @toothbrushes = @toothbrushes.where(status: "Available")
       @markers = @toothbrushes.geocoded.map do |toothbrush|
         {
           lat: toothbrush.latitude,
@@ -43,6 +44,7 @@ class ToothbrushesController < ApplicationController
   end
 
   def create
+    @tag = Tag.all
     user = current_user
     @toothbrush = Toothbrush.new(toothbrush_params)
     authorize @toothbrush
@@ -72,6 +74,7 @@ class ToothbrushesController < ApplicationController
     if @toothbrush.update(toothbrush_params)
       redirect_to toothbrush_path(@toothbrush)
     else
+
       render 'edit'
     end
   end

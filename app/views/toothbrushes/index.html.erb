@@ -1,46 +1,44 @@
-<div class="index_container mb-4">
+<div class="index-container mb-4">
   <h1 class="p-3">Welcome to Toothbrush Paradise</h1>
-   <div class="counter">
+  <div class="counter">
     <p>Toothbrush Available: <span id="count_number"><%= @toothbrushes_count %></span></p>
   </div>
   <div class="row">
     <div class="col-lg-8">
-      <div class="left_container pt-3">
-        <div class="toothbrush_container">
+      <div class="left-container pt-3">
+        <div class="toothbrush-container">
           <div class="row">
             <%= javascript_tag "alert('Sorry, no result for #{params[:query]} 😞, Please try something else')" unless @toothbrushes != [] %>
             <% @toothbrushes.each do |toothbrush| %>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-              <div class="card-trip mb-4">
-              <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
-                <div class="card-trip-infos">
-                  <div>
-                    <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
-                    <p><%= toothbrush.description %></p>
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="card-trip mb-4">
+                  <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
+                      <p><%= toothbrush.description %></p>
+                    </div>
+                    <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
+                    <% if toothbrush.user.photo.attached? == false %>
+                      <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
+                    <% else %>
+                      <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
+                    <% end %>
                   </div>
-                  <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
-                  <% if toothbrush.user.photo.attached? == false %>
-                    <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
-                  <% else %>
-                    <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
-                  <% end %>
+                  <ul class="tags-list">
+                    <% toothbrush.tags.each do |tag| %>
+                      <li class="li-tags"><%= tag.name.capitalize %></li>
+                    <% end %>
+                  </ul>
                 </div>
               </div>
-
-            </div>
             <% end %>
           </div>
-          <ul class="tags-list">
-            <% toothbrush.tags.each do |tag| %>
-              <li class="li-tags"><%= tag.name.capitalize %></li>
-            <% end %>
-          </ul>
         </div>
       </div>
     </div>
-
     <div class="col-lg-4">
-      <div class="map_container">
+      <div class="map-container">
         <div class="add-tb my-3 btn-block text-center ">
           <%= link_to '➕  Toothbrush', new_toothbrush_path, class: "btn btn-primary btn-block btn-lg", id: "add-btn" %>
         </div>
@@ -51,5 +49,5 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
