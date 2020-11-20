@@ -1,5 +1,5 @@
 class ToothbrushesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :count]
   before_action :set_counter
 
   def index
