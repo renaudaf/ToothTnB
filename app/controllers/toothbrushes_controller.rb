@@ -1,5 +1,6 @@
 class ToothbrushesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :count]
+  before_action :set_counter
 
   def index
     if params[:query].present?
@@ -37,6 +38,7 @@ class ToothbrushesController < ApplicationController
 
   def new
     @toothbrush = Toothbrush.new
+    @tag = Tag.all
     authorize @toothbrush
   end
 
@@ -46,6 +48,13 @@ class ToothbrushesController < ApplicationController
     authorize @toothbrush
     @toothbrush.user = user
     if @toothbrush.save
+      tag_ids = params[:toothbrush][:tags]
+      if tag_ids
+        tag_ids.each do |tag|
+          new_tag = ToothbrushTag.new(toothbrush_id: @toothbrush.id, tag_id: tag)
+          new_tag.save!
+        end
+      end
       redirect_to toothbrush_path(@toothbrush)
     else
       render 'new'
@@ -74,9 +83,19 @@ class ToothbrushesController < ApplicationController
     redirect_to toothbrushes_path
   end
 
+  def count
+    @toothbrush = Toothbrush.new
+    authorize @toothbrush
+    render json: { count: Toothbrush.where(status: "Available").count }
+  end
+
   private
 
   def toothbrush_params
     params.require(:toothbrush).permit(:title, :description, :status, :photo, :price, :address)
+  end
+
+  def set_counter
+    @toothbrushes_count = Toothbrush.where(status: "Available").count
   end
 end

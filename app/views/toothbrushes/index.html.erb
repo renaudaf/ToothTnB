@@ -1,5 +1,8 @@
 <div class="index_container mb-4">
   <h1 class="p-3">Welcome to Toothbrush Paradise</h1>
+   <div class="counter">
+    <p>Toothbrush Available: <span id="count_number"><%= @toothbrushes_count %></span></p>
+  </div>
   <div class="row">
     <div class="col-lg-8">
       <div class="left_container pt-3">
@@ -23,9 +26,15 @@
                   <% end %>
                 </div>
               </div>
+
             </div>
             <% end %>
           </div>
+          <ul class="tags-list">
+            <% toothbrush.tags.each do |tag| %>
+              <li class="li-tags"><%= tag.name.capitalize %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
