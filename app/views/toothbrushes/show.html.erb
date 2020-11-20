@@ -34,25 +34,27 @@
         </div>
 
         <div class="list-group mb-4">
+          <% if !@toothbrush.reviews.empty? %>
           <h2>Reviews</h2>
-          <% @toothbrush.reviews.each do |review| %>
-            <li class="list-group-item">
-            <small>
-            <% count = 0 %>
-            <% 5.times do %>
-            <% if review.rating > count %>
-              <i class="fas fa-star"></i>
-              <% else %>
-                <i class="far fa-star"></i>
-              <% end %>
-                <% count += 1 %>
-              <% end %>
-                </small>
-                <p><%= review.content %></p>
-                <p> <small> <em>Reviewed by: <%= review.user.first_name %> </em> </small> </p>
-                </li>
-            <% end %>
-            <%= render "reviews/form" %>
+            <% @toothbrush.reviews.each do |review| %>
+              <li class="list-group-item">
+              <small>
+              <% count = 0 %>
+              <% 5.times do %>
+              <% if review.rating > count %>
+                <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                  <% count += 1 %>
+                <% end %>
+                  </small>
+                  <p><%= review.content %></p>
+                  <p> <small> <em>Reviewed by: <%= review.user.first_name %> </em> </small> </p>
+                  </li>
+              <% end %>              
+          <% end %>
+          <%= render "reviews/form" %>
         </div>
       </div>
     </div>
