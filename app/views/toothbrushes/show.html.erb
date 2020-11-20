@@ -4,11 +4,11 @@
       <div class="left_container mt-3">
         <div class="card_show">
           <div class="head_card">
-            <h2> <%= @toothbrush.title %></h2>          
+            <h2> <%= @toothbrush.title %></h2>
             <%= cl_image_tag @toothbrush.photo.key, width: 200, crop: :fill %>
           </div>
           <div class="toothbrush-description mt-5 pt-3">
-            <ul>
+            <ul class="mb-0">
               <li><%= @toothbrush.description %> </li>
               <br>
               <li><%= @toothbrush.price %> $</li>
@@ -17,6 +17,11 @@
               <br>
               <li><%= @toothbrush.address %> </li>
               <br>
+            </ul>
+            <ul class="tags-list show-list text-left">
+                <% @toothbrush.tags.each do |tag| %>
+                  <li class="li-tags"><%= tag.name.capitalize %></li>
+                <% end %>
             </ul>
           </div>
         </div>
@@ -52,15 +57,16 @@
                   <p><%= review.content %></p>
                   <p> <small> <em>Reviewed by: <%= review.user.first_name %> </em> </small> </p>
                   </li>
-              <% end %>              
+              <% end %>
           <% end %>
           <%= render "reviews/form" %>
         </div>
       </div>
     </div>
-  
+
     <% if !@toothbrushes.empty? %>
-    <div class="col-sm-12 col-md-12 col-lg-4 pt-3">
+=======
+    <div class="col-sm-12 col-md-12 col-lg-4 pt-3 mb-4">
         <div class="right-container mb-5">
           <div class="toothbrush_container">
             <h2>Owner's other toothbrushes</h2>
