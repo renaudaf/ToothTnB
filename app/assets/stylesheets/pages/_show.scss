@@ -6,15 +6,6 @@
   
 }
 
-.toothbrush_description li {
-  list-style: none;
-  text-align: left;
-}
-
-.left_container {
- 
-}
-
 .card_show {
   display: flex;
   background-color: whitesmoke;
@@ -28,8 +19,12 @@
   color: #2a8aaf;
 }
 
-.toothbrush_description {
+.toothbrush-description {
   color: #63c4eb;
+  li {
+    list-style: none;
+    text-align: left;
+  }
 }
 
 .list-group {
