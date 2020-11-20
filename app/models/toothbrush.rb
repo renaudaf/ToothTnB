@@ -9,8 +9,7 @@ class Toothbrush < ApplicationRecord
   has_many :tags, through: :toothbrush_tags
   belongs_to :user
   validates :title, presence: true, uniqueness: true
-  validates :description, presence: true
-  validates :price, presence: true
+  validates :description, :price, :address, presence: true
   validates :status, inclusion: { in: ["Available", "Not Available"],
                                   message: "%{value} is not a valid category" }
   searchkick locations: [:location]
