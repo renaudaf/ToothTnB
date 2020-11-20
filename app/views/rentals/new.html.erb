@@ -2,7 +2,7 @@
  <div class="form">
   <h1 class='mt-4'>Enter a date for your rental</h1>
   <%= simple_form_for(@rental, url: toothbrush_rentals_path(@toothbrush)) do |f|  %>
-   <%= f.input :date %>
+   <%= f.input :date, html5: true %>
    <%= f.submit "Submit", class: "btn btn-primary form-btn" %>
   <% end %>
  </div>
