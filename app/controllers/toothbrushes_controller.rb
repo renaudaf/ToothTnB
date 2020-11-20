@@ -58,7 +58,6 @@ class ToothbrushesController < ApplicationController
       end
       redirect_to toothbrush_path(@toothbrush)
     else
-      raise
       render 'new'
     end
   end
