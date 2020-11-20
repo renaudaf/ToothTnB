@@ -8,7 +8,7 @@
     <%= f.input :address %>
     <%= f.input :photo, as: :file %>
     <%= f.input :tags, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-primary form-btn mb-4" %>
   <% end %>
 </div>
 
