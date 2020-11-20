@@ -1,22 +1,24 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.index_container {
+.index-container {
   width: 80%;
   margin: 0 auto;
-
 }
 
-.index_container h1 {
+.index-container h1 {
   text-align: center;
 }
 
-.toothbrush_container {
+.toothbrush-container {
   grid-template-columns: repeat(3, 1fr);
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  h1 {
+    font-weight: lighter;
+  }
   background-color: #bee7f7;
   color: white;
 }
@@ -41,7 +43,7 @@ a:hover {
   color: #dd1321;
 }
 
-.toothbrush_container {
+.toothbrush-container {
   p {
     color: black;
   }
