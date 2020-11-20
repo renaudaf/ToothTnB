@@ -1,76 +1,87 @@
-<div class="container mb-5 d-flex">
-  <div class="show_title mt-3">
-    <h2> <%= @toothbrush.title %> </h2>
-  <div class="toothbrush_description d-flex align-items-center">
-    <%= cl_image_tag @toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
-    <ul>
-      <li><%= @toothbrush.description %> </li>
-      <br>
-      <li><%= @toothbrush.price %> $</li>
-      <br>
-      <li><%= @toothbrush.status %> </li>
-      <br>
-      <li><%= @toothbrush.address %> </li>
-      <br>
-      <div class="link-container d-flex">
-        <% if policy(@toothbrush).edit? %>
-       <li class='mr-2'><%= link_to "Edit", edit_toothbrush_path(@toothbrush), class: "btn btn-primary"  %></li>
-       <% end %>
-       <% if policy(@toothbrush).destroy? %>
-       <li><%= link_to "Remove", toothbrush_path(@toothbrush), class: "btn btn-primary",
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } %></li>
-      <% end %>
-        <li><%= link_to "Book Toothbrush", new_toothbrush_rental_path(@toothbrush), class: "btn btn-primary ml-2" %></li>
+<div class="show_container mt-3">
+  <div class="row">
+    <div class="col-sm-12 col-sm-8 col-lg-8">
+      <div class="left_container mt-3">
+        <div class="card_show">
+          <div class="head_card">
+            <h2> <%= @toothbrush.title %></h2>          
+            <%= cl_image_tag @toothbrush.photo.key, width: 200, crop: :fill %>
+          </div>
+          <div class="toothbrush_description mt-5 pt-3">
+            <ul>
+              <li><%= @toothbrush.description %> </li>
+              <br>
+              <li><%= @toothbrush.price %> $</li>
+              <br>
+              <li><%= @toothbrush.status %> </li>
+              <br>
+              <li><%= @toothbrush.address %> </li>
+              <br>
+            </ul>
+          </div>
+        </div>
+
+        <div class="link-container">
+          <% if policy(@toothbrush).edit? %>
+            <li class='mr-2'><%= link_to "Edit", edit_toothbrush_path(@toothbrush), class: "btn btn-primary"  %></li>
+          <% end %>
+          <% if policy(@toothbrush).destroy? %>
+            <li><%= link_to "Remove", toothbrush_path(@toothbrush), class: "btn btn-primary",
+                              method: :delete,
+                              data: { confirm: "Are you sure?" } %></li>
+          <% end %>
+          <%= link_to "Book Toothbrush", new_toothbrush_rental_path(@toothbrush), class: "btn btn-primary btn-block mt-4 mb-4" %>
+        </div>
+
+        <div class="list-group">
+          <h2>Reviews</h2>
+          <% @toothbrush.reviews.each do |review| %>
+            <li class="list-group-item">
+            <small>
+            <% count = 0 %>
+            <% 5.times do %>
+            <% if review.rating > count %>
+              <i class="fas fa-star"></i>
+              <% else %>
+                <i class="far fa-star"></i>
+              <% end %>
+                <% count += 1 %>
+              <% end %>
+                </small>
+                <p><%= review.content %></p>
+                <p> <small> <em>Reviewed by: <%= review.user.first_name %> </em> </small> </p>
+                </li>
+            <% end %>
+            <%= render "reviews/form" %>
+        </div>
       </div>
-    </ul>
-  </div>
- <div class="list-group mt-4">
-  <h2>Reviews</h2>
-    <% @toothbrush.reviews.each do |review| %>
-      <li class="list-group-item">
-      <small>
-      <% count = 0 %>
-      <% 5.times do %>
-        <% if review.rating > count %>
-          <i class="fas fa-star"></i>
-        <% else %>
-          <i class="far fa-star"></i>
-        <% end %>
-        <% count += 1 %>
-      <% end %>
-      </small>
-      <p><%= review.content %></p>
-      <p> <small> <em>Reviewed by: <%= review.user.first_name %> </em> </small> </p>
-      </li>
-      <% end %>
-      <%= render "reviews/form" %>
     </div>
-  </div>
-  <% if !@toothbrushes.empty? %>
-    <div class="owner-container mt-3">
-      <div class="owner-title text-center">
-        <h2>Owner's other toothbrushes</h2>
-      </div>
-      <div class="toothbrush-container ml-3">
-        <% @toothbrushes.each do |toothbrush| %>
-            <div class="card-trip m-3">
-              <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
-              <div class="card-trip-infos">
-                <div>
-                  <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
-                  <p><%= toothbrush.description %></p>
+  
+    <div class="col-sm-12 col-md-12 col-lg-4 pt-3">
+      <div class="right-container mb-5">
+        <% if !@toothbrushes.empty? %>
+          <div class="toothbrush_container">
+            <h2>Owner's other toothbrushes</h2>
+            <% @toothbrushes.each do |toothbrush| %>
+                <div class="card-trip m-3">
+                  <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
+                      <p><%= toothbrush.description %></p>
+                    </div>
+                    <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
+                    <% if toothbrush.user.photo.attached? == false %>
+                      <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
+                    <% else %>
+                      <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
+                    <% end %>
+                  </div>
                 </div>
-                <h2 class="card-trip-pricing"><%= toothbrush.price %>$</h2>
-                <% if toothbrush.user.photo.attached? == false %>
-                  <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class:"card-trip-user avatar-bordered crop-fill" %>
-                <% else %>
-                  <%= cl_image_tag toothbrush.user.photo.key, class:"card-trip-user avatar-bordered" %>
-                <% end %>
-              </div>
-            </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>

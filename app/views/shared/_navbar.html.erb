@@ -7,11 +7,20 @@
   <% end %>
   <div class="search-bar">
     <%= form_tag root_path, method: :get, class: "d-flex" do %>
+    <% unless params["action"] == "new" %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a Toothbrush"
-      %>
+        placeholder: "Find a Toothbrush",
+        autofocus: "autofocus"
+        %>
+      <% else %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Toothbrush" %>
+      <% end %>
+
       <%= submit_tag "Search", id: "search-b", class: "btn btn-primary ml-2" %>
     <% end %>
   </div>
@@ -42,7 +51,7 @@
           <% if user_signed_in? %>
             <%= link_to "Add a toothbrush", new_toothbrush_path, class: "dropdown-item" %>
           <% end %>
-          <%= link_to "My Rentals", rentals_path, class: "dropdown-item" %>
+          <%= link_to "My Dashboard", rentals_path, class: "dropdown-item" %>
           <% if user_signed_in? %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           <% end %>

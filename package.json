@@ -2,6 +2,7 @@
   "name": "ToothTnB",
   "private": true,
   "dependencies": {
+    "2": "^3.0.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -11,6 +12,7 @@
     "mapbox-gl": "^1.12.0",
     "places.js": "^1.19.0",
     "popper.js": "^1.16.1",
+    "select": "^1.1.2",
     "select2": "^4.0.13",
     "turbolinks": "^5.2.0"
   },

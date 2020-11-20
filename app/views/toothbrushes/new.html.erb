@@ -1,10 +1,10 @@
 <div class="container">
   <h1 class='mt-2'>New Toothbrush</h1>
   <%= simple_form_for(@toothbrush) do |f|  %>
-    <%= f.input :title %>
+    <%= f.input :title, autofocus: true %>
     <%= f.input :description %>
     <%= f.input :price %>
-    <%= f.input :status, type: 'select', collection: ['Available', 'Not Available' ]%>
+    <%= f.input :status, as: :radio_buttons, collection: ['Available', 'Not Available' ]  %>
     <%= f.input :address %>
     <%= f.input :photo, as: :file %>
     <%= f.input :tags, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
