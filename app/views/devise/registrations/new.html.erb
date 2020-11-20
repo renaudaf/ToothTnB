@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Sign up</h2>
+  <h2 class="mt-4">Sign up</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -25,10 +25,11 @@
                   input_html: { autocomplete: "off" } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+    <div class="form-actions mb-4">
+      <%= f.button :submit, "Sign up", class: 'btn btn-primary', id: "form-btn" %>
+      <%= render "devise/shared/links" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+
 </div>
