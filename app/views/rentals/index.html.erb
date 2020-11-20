@@ -1,40 +1,42 @@
 <div class="container">
-  <h1 class='mt-3'>Dashboard</h1>
-  <div class="my-rentals mt-3">
-    <h2>My Rentals</h2>
-    <% @rentals.each_with_index do |rental, index| %>
-      <% if current_user == rental.user %>
-        <div class="row card-product m-4">
-          <div class="col-3">
-            <% toothbrush = Toothbrush.find(@rentals[index].toothbrush_id) %>
-            <% user = User.find(@rentals[index].user_id) %>
-            <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+  <div class="rental-container">
+    <h1 class='mt-3'>Dashboard</h1>
+    <div class="my-rentals mt-3">
+      <h2>My Rentals</h2>
+      <% @rentals.each_with_index do |rental, index| %>
+        <% if current_user == rental.user %>
+          <div class="row card-product m-4">
+            <div class="col-3">
+              <% toothbrush = Toothbrush.find(@rentals[index].toothbrush_id) %>
+              <% user = User.find(@rentals[index].user_id) %>
+              <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+            </div>
+            <div class="col-9 card-product-infos">
+              <h2><%= link_to toothbrush.title, rental_path(rental) %></h2>
+              <p>Reserve by:
+                <strong><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></strong>
+                on: <%= rental.date %>
+              </p>
+              <p>Status: <%= rental.status %></p>
+            </div>
           </div>
-          <div class="col-9 card-product-infos">
-            <h2><%= link_to toothbrush.title, rental_path(rental) %></h2>
-            <p>Reserve by:
-              <strong><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></strong>
-              on: <%= rental.date %>
-            </p>
-            <p>Status: <%= rental.status %></p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <div class="my-renties">
-    <h2>My Toothbrushes</h2>
-    <% @toothbrushes.each do |toothbrush| %>
-        <div class="row card-product m-4">
-          <div class="col-3">
-            <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
+    <div class="my-renties">
+      <h2>My Toothbrushes</h2>
+      <% @toothbrushes.each do |toothbrush| %>
+          <div class="row card-product m-4">
+            <div class="col-3">
+              <%= cl_image_tag toothbrush.photo.key, height: 300, width: 400, crop: :fill %>
+            </div>
+            <div class="col-9 card-product-infos">
+              <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
+              <p>Status: <%=  toothbrush.status %></p>
+            </div>
           </div>
-          <div class="col-9 card-product-infos">
-            <h2><%= link_to toothbrush.title, toothbrush_path(toothbrush) %></h2>
-            <p>Status: <%=  toothbrush.status %></p>
-          </div>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -1,16 +1,14 @@
 .show_container {
   width: 85%;
-  margin: 0 auto;  
+  margin: 0 auto;
   text-align: center;
-  
 }
 
 .card_show {
   display: flex;
   background-color: whitesmoke;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .head_card {
@@ -29,11 +27,12 @@
 .list-group {
   background-color: whitesmoke;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 20px;
   color: #2a8aaf;
-  
-  
+  li {
+    text-align: left;
+  }
   h2 {
     color: #2a8aaf;
   }
@@ -42,13 +41,9 @@
 .right-container {
   background-color: whitesmoke;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  position: absolute;
-  overflow-y: scroll;
   height: 100%;
-  
-
   h2 {
     color: #2a8aaf;
   }
