@@ -4,7 +4,7 @@ class Toothbrush < ApplicationRecord
   has_one_attached :photo
   has_many :reviews, dependent: :destroy
   has_many :rentals, dependent: :destroy
-  has_many :toothbrush_tags
+  has_many :toothbrush_tags, dependent: :destroy
   has_many :tags, through: :toothbrush_tags
   belongs_to :user
   validates :title, presence: true, uniqueness: true
@@ -13,7 +13,7 @@ class Toothbrush < ApplicationRecord
   validates :status, inclusion: { in: ["Available", "Not Available"],
               message: "%{value} is not a valid category" }
   searchkick locations: [:location]
-  
+
    def search_data
     attributes.merge(location: {lat: latitude, lon: longitude})
   end

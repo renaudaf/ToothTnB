@@ -9,8 +9,8 @@ class ToothbrushTagsController < ApplicationController
 
   def create
     @toothbrush = Toothbrush.find(params[:toothbrush_id])
-    tag_ids = params[:toothbrush_tag][:tag]
     authorize @toothbrush
+    tag_ids = params[:toothbrush_tag][:tag]
 
     tag_ids.each do |tag|
       new_tag = ToothbrushTag.new(toothbrush_id: @toothbrush.id, tag_id: tag)
