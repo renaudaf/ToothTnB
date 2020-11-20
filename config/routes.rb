@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'toothbrushes#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'toothbrushes/count', to: 'toothbrushes#count'
   resources :toothbrushes do
     resources :reviews, only: [:create]
     resources :rentals, only: [:create, :new]
@@ -17,4 +18,5 @@ Rails.application.routes.draw do
   resources :toothbrushes, only: [] do
     resources :toothbrush_tags, only: [:new, :create]
   end
+
 end
