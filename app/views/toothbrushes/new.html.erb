@@ -1,15 +1,16 @@
 <div class="container">
-  <h1 class='mt-2'>New Toothbrush</h1>
-  <%= simple_form_for(@toothbrush) do |f|  %>
-    <%= f.input :title, autofocus: true %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :status, as: :radio_buttons, collection: ['Available', 'Not Available' ]  %>
-    <%= f.input :address %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :tags, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
-    <%= f.submit "Submit", class: "btn btn-primary form-btn mb-4" %>
-  <% end %>
+  <div class="newt-container">
+    <h1 class='mt-2'>New Toothbrush</h1>
+    <%= simple_form_for(@toothbrush) do |f|  %>
+      <%= f.input :title, autofocus: true %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :status, as: :radio_buttons, collection: ['Available', 'Not Available' ]  %>
+      <%= f.input :address %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :tags, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
+      <%= f.submit "Submit", class: "btn btn-primary form-btn mb-4" %>
+    <% end %>
+  </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
