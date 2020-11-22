@@ -1,19 +1,7 @@
-.show_container {
+.show-container {
   width: 85%;
   margin: 0 auto;
   text-align: center;
-}
-
-.card_show {
-  display: flex;
-  background-color: whitesmoke;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.head_card {
-  padding: 20px;
-  color: #2a8aaf;
 }
 
 .toothbrush-description {
@@ -46,9 +34,7 @@
   position: absolute;
   overflow-y: scroll;
   min-height: 450px;
-  height: 96%; 
-
-
+  height: 96%;
   h2 {
     color: #2a8aaf;
   }
