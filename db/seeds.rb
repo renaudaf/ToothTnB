@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
 User.all.destroy_all
@@ -22,11 +15,11 @@ file = URI.open('https://static.wikia.nocookie.net/villains/images/4/4a/Kevin_Sp
 john.photo.attach(io: file, filename: 'john.png', content_type: 'image/png')
 
 
-first = Toothbrush.new(title: "Tiger Brush", description: "Ain't barely been used, not much teeth round here", price: 0.5, status: "Available", user_id: User.first.id, address: '16 Villa Gaudelet, Paris')
-file = URI.open('https://lh3.googleusercontent.com/proxy/yU3q5Y3nNZuY7202piT8MYVdVx3SxwEMu41XPjfR8goacbpoSythuLcNyeFRMQi_w8zjGi4c4SWfxEfxIAK5IGBvCZCxXPN8lpnQEJfBe3vUWLcDTsiJoDb_D6y3dZ4QeXKNeCWB8g')
-first.photo.attach(io: file, filename: 'Tiger.png', content_type: 'image/png')
-puts "Creating #{first[:title]}"
-first.save!
+# first = Toothbrush.new(title: "Tiger Brush", description: "Ain't barely been used, not much teeth round here", price: 0.5, status: "Available", user_id: User.first.id, address: '16 Villa Gaudelet, Paris')
+# file = URI.open('https://lh3.googleusercontent.com/proxy/yU3q5Y3nNZuY7202piT8MYVdVx3SxwEMu41XPjfR8goacbpoSythuLcNyeFRMQi_w8zjGi4c4SWfxEfxIAK5IGBvCZCxXPN8lpnQEJfBe3vUWLcDTsiJoDb_D6y3dZ4QeXKNeCWB8g')
+# first.photo.attach(io: file, filename: 'Tiger.png', content_type: 'image/png')
+# puts "Creating #{first[:title]}"
+# first.save!
 
 second = Toothbrush.new(title: "Basically Basic", description: "Am I basic? Noooope! But my toothbrush is ;)", price: 125, status: "Not Available", user_id: User.first.id, address: '3555 avenue Casgrain, Montreal')
 file = URI.open('https://www.drharris.co.uk/wp-content/uploads/2018/12/Toothbrush-Hard-Bristle-Sq.jpg')

@@ -38,8 +38,6 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   initSelect2();
   toothbrushCount();
-  // Call your functions here, e.g:
-  // initSelect2();
   updateStatusAccept();
   updateStatusDeny();
   initMapbox();
